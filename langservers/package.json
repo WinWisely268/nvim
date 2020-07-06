@@ -1,0 +1,16 @@
+{
+  "name": "vimfiles",
+  "version": "1.0.0",
+  "scripts": {},
+  "license": "ISC",
+  "dependencies": {
+    "@fsouza/prettierd": "0.6.0",
+    "bash-language-server": "^1.16.1",
+    "typescript-language-server": "^0.4.0",
+    "vim-language-server": "^2.0.1",
+    "vscode-css-languageserver-bin": "^1.4.0",
+    "vscode-html-languageserver-bin": "^1.4.0",
+    "vscode-json-languageserver": "^1.2.3",
+    "yaml-language-server": "^0.8.0"
+  }
+}

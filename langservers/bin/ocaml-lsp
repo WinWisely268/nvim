@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
+OCAML_LS_LOCATION=$ROOT/ocaml-lsp
+
+exec "${OCAML_LS_LOCATION}/_build/install/default/bin/ocamllsp"

@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -e
+
+PORT=25225
+if [ -z "$BLACKD_LOGS_DIR" ]; then
+	echo missing BLACKD_LOGS_DIR >&2
+	exit 2
+fi
+
+mkdir -p "${BLACKD_LOGS_DIR}"
+
+function start_blackd() {
+	blackd --bind-host 127.0.0.1 --bind-port "${PORT}" 1>>"${BLACKD_LOGS_DIR}/stdout.log" 2>>"${BLACKD_LOGS_DIR}/stderr.log" &
+	disown
+}
+
+function wait_for_blackd() {
+	if ! timeout 10 bash -c 'while ! curl -o /dev/null -m 1 "http://127.0.0.1:${PORT}"; do sleep 1; done'; then
+		echo "failed to connect to blackd after 10s"
+		exit 1
+	fi
+}
+
+if ! pgrep -f blackd &>/dev/null; then
+	start_blackd
+	wait_for_blackd
+fi
+
+original_source=$(cat -)
+formatted_source=$(curl -sfH "X-Fast-Or-Safe: fast" -XPOST "http://127.0.0.1:${PORT}/" -d "${original_source}")
+
+if [[ ${formatted_source} == "" ]]; then
+	echo "${original_source}"
+else
+	echo "${formatted_source}"
+fi

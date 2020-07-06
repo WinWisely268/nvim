@@ -1,0 +1,74 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+jobs:
+  bootstrap:
+    strategy:
+      matrix:
+        os:
+          - ubuntu
+          - macos
+
+    name: bootstrap
+    runs-on: ${{ matrix.os }}-latest
+    steps:
+      - name: install brew deps on mac
+        run: brew install bash shellcheck ninja
+        if: matrix.os == 'macos'
+
+      - name: install neovim nightly
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu" ]; then
+            suffix=linux64
+          else
+            suffix=${{ matrix.os }}
+          fi
+          curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
+
+      - name: install shellcheck on linux
+        run: sudo apt-get update && sudo apt-get install -y shellcheck ninja-build
+        if: matrix.os == 'ubuntu'
+
+      - uses: actions/checkout@v2.3.1
+
+      - run: make shellcheck
+
+      - uses: actions/setup-node@v2.1.0
+        with:
+          node-version: "14.x"
+
+      - uses: avsm/setup-ocaml@v1.1.0
+        with:
+          ocaml-version: "4.10.0"
+
+      - uses: actions/setup-python@v2.0.1
+        with:
+          python-version: "3.x"
+
+      - run: pip install virtualenv
+
+      - uses: actions-rs/toolchain@v1.0.6
+        with:
+          toolchain: stable
+
+      - uses: actions/setup-go@v2.1.0
+        with:
+          go-version: "1.x"
+
+      - name: copy files to config dir
+        run: |
+          mkdir -p $HOME/.config
+          cp -rv $PWD $HOME/.config/nvim
+
+      - name: bootstrap from config dir
+        env:
+          NVIM_DEBUG: 1
+        run: |
+          eval "$(opam env)"
+          make -j -f $HOME/.config/nvim/Makefile bootstrap

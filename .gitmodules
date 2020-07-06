@@ -1,0 +1,6 @@
+[submodule "langservers/ocaml-lsp"]
+	path = langservers/ocaml-lsp
+	url = https://github.com/ocaml/ocaml-lsp.git
+[submodule "langservers/lua-language-server"]
+	path = langservers/lua-language-server
+	url = https://github.com/sumneko/lua-language-server

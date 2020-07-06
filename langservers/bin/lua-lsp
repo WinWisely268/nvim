@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
+export PATH="${ROOT}/bin:${PATH}"
+
+os_folder=$(uname -s)
+
+if [[ $os_folder == "Darwin" ]]; then
+	os_folder=macOS
+fi
+
+cd "${ROOT}/lua-language-server"
+exec "bin/${os_folder}/lua-language-server" -E ./main.lua

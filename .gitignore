@@ -1,0 +1,4 @@
+autoload/fzf.vim
+autoload/plug.vim
+plugin/local-*.vim
+langservers/node_modules

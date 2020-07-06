@@ -1,0 +1,5 @@
+black[d]
+flake8
+isort
+jedi-language-server
+mypy

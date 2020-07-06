@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+folding	init.lua	/^local folding = function()$/;"	f
+global_mappings	init.lua	/^local global_mappings = function()$/;"	f
+global_options	init.lua	/^local global_options = function()$/;"	f
+global_vars	init.lua	/^local global_vars = function()$/;"	f
+hererocks	init.lua	/^local hererocks = function()$/;"	f
+initial_mappings	init.lua	/^local initial_mappings = function()$/;"	f
+py3_host_prog	init.lua	/^local py3_host_prog = function()$/;"	f
+rnu	init.lua	/^local rnu = function()$/;"	f
+setup_completion	plugin/init.lua	/^local setup_completion = function()$/;"	f
+setup_fzf_mappings	plugin/init.lua	/^local setup_fzf_mappings = function()$/;"	f
+setup_global_ns	plugin/init.lua	/^local setup_global_ns = function()$/;"	f
+setup_hlyank	plugin/init.lua	/^local setup_hlyank = function()$/;"	f
+setup_prettierd	plugin/init.lua	/^local setup_prettierd = function()$/;"	f
+setup_spell	plugin/init.lua	/^local setup_spell = function()$/;"	f
+setup_terminal_commands	plugin/init.lua	/^local setup_terminal_commands = function()$/;"	f
+setup_word_replace	plugin/init.lua	/^local setup_word_replace = function()$/;"	f
+ui_options	init.lua	/^local ui_options = function()$/;"	f
