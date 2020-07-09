@@ -1,0 +1,5 @@
+" please read through this file and change what you need to change
+
+let g:python3_host_prog='/usr/local/bin/python3'
+
+let g:mkdp_browser = 'firefox'
