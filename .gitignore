@@ -4,6 +4,7 @@ view/
 plugged/
 sessions/
 autoload/
+plugin/packer_compiled.vim
 tmp/
 .netrwhist
 _machine_specific.vim
@@ -11,4 +12,4 @@ machine_specific.vim
 .vim-bookmarks
 pack/
 tags
-plugin/packer_load.vim
+after/queries

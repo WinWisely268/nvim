@@ -21,12 +21,35 @@ local function toggler(close_cmd, open_cmd)
 
 end
 
-function M.toggle()
-  toggler('lclose', 'lopen')
+function M.toggle() toggler('lclose', 'lopen') end
+
+function M.qftoggle() toggler('cclose', 'copen') end
+
+function M.get_loclist()
+  local api = vim.api
+  local loclist = api.nvim_call_function('getloclist', {0})
+  local result = {}
+  for _, err in ipairs(loclist) do
+    local name = vim.api.nvim_call_function('bufname', {err.bufnr})
+    local display = ' ' .. err.lnum .. ':' .. err.col .. ' ' ..name.. ' -> '.. err.text
+    table.insert(result, display)
+  end
+  return result
 end
 
-function M.qftoggle()
-  toggler('cclose', 'copen')
+function M.get_quickfix()
+  local ll = vim.api.nvim_call_function('getqflist', {0})
+  for _, v in ipairs(ll) do print(v) end
+end
+
+function M.open_loc_item(e)
+  local line = e
+  local filename = vim.fn.fnameescape(vim.fn.split(line, [[:\d\+:]])[1])
+  local linenr = vim.fn.matchstr(line, [[:\d\+:]])
+  local column = vim.fn.matchstr(line, [[\(:\d\+\)\@<=:\d\+:]])
+  vim.cmd('e ' .. filename)
+  vim.cmd('call cursor('..linenr..','..column')')
 end
 
 return M
+

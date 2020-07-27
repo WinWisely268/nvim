@@ -1,18 +1,24 @@
+local selected_color = require('cosmetics.colors.tomorrow-night')
 local M = {}
 
--- NORD COLORS
-M.black = '#2E3440'
-M.red = '#BF616A'
-M.green = '#A3BE8C'
-M.yellow = '#EBCB8B'
-M.blue = '#81A1C1'
-M.magenta = '#B48EAD'
-M.cyan = '#88C0D0'
-M.lightgray = '#E5E9F0'
-M.darkgray = '#3B4252'
-M.white = '#ECEFF4'
-M.fg = '#D8DEE9'
-M.bg = '#2E3440'
-M.bg2 = '#4C566A'
+function M.setup()
+  vim.o.background = 'dark'
+  vim.api.nvim_command('highlight clear')
+  vim.api.nvim_command('syntax reset')
+  vim.wo.number = true
+  vim.wo.relativenumber = true
+  vim.o.termguicolors = true
+  vim.g.colors_name = 'none'
+  selected_color.basic_scheme()
+  selected_color.setup_terminal()
+  selected_color.setup_misc()
+  selected_color.setup_langbase()
+  selected_color.setup_markdown()
+  selected_color.setup_plugin_colors()
+  vim.schedule(function()
+    vim.api.nvim_command(
+      [[command! ResetColors lua require('cosmetics.colors').setup()]])
+  end)
+end
 
 return M

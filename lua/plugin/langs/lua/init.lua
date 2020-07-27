@@ -1,22 +1,16 @@
-local util = require('lib.util')
-local api = vim.api
-
+local au = require('lib.au')
 local M = {}
-
-function M.lua_ft_opts()
-  api.nvim_buf_set_option(0, 'shiftwidth', 2)
-  api.nvim_buf_set_option(0, 'tabstop', 2)
-  api.nvim_buf_set_option(0, 'softtabstop', 2)
-end
 
 function M.setup_lua_autocmd()
   local lua_augroups = {
     OnLuaFt = {
-      {'FileType', '*.lua', [[lua require('plugin.langs.lua.init').lua_ft_opts()]]},
-      {'BufWrite', '*.lua', 'call LuaFormat()'},
-    },
+      {'Filetype'; 'lua'; 'nmap <buffer> <LEADER>mrl <Plug>(Luadev-Runline)'};
+      {'Filetype'; 'lua'; 'vmap <buffer> <LEADER>mrr <Plug>(Luadev-Run)'};
+      {'Filetype'; 'lua'; 'nmap <buffer> <LEADER>mrw <Plug>(Luadev-RunWord)'};
+      {'Filetype'; 'lua'; 'imap <buffer> <LEADER>mrc <Plug>(Luadev-Complete)'}
+    }
   }
-  util.create_augroups(lua_augroups)
+  au.create_augroups(lua_augroups)
 end
 
 return M
