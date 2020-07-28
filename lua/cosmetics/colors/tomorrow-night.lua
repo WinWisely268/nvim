@@ -213,7 +213,7 @@ local setup_langbase = function()
   hi('Structure', {guifg = purple[1]; ctermfg = purple[2]})
   hi('Tag', {guifg = yellow[1]; ctermfg = yellow[2]})
   hi('Todo', {guifg = yellow[1]; guibg = bg1[1]; ctermfg = yellow[2]; ctermbg = bg1[2]; gui = 'bold,italic'})
-  hi('Type', {guifg = yellow[1]; ctermfg = yellow[2]})
+  hi('Type', {guifg = fg0[1]; ctermfg = fg0[2]; gui='bold'})
   hi('Typedef', {guifg = yellow[1]; ctermfg = yellow[2]})
   hi('NonText', {guifg = bg3[1]; ctermfg = bg3[2]})
 

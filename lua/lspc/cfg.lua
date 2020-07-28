@@ -136,15 +136,7 @@ local configs = {
   -- HTML
   html = {};
   -- Rust
-  rust_analyzer = {
-    settings = {
-      ['rust-analyzer'] = {
-        highlighting = {semanticTokens = false};
-        highlightingOn = false;
-        rainbowHighlightingOn = false
-      }
-    }
-  };
+  rust_analyzer = {};
   -- Vim
   vimls = {}
 
