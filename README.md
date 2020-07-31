@@ -7,7 +7,13 @@
                                                                         
 ```
 
-Screenshots are using tomorrow night
+- Nord:
+
+![](./scrots/nord1.png)
+
+![](./scrots/nord2.png)
+
+- Tomorrow Night
 
 ![](./scrots/clean.png)
 
