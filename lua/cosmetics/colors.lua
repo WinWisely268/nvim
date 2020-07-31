@@ -1,4 +1,4 @@
-local selected_color = require('cosmetics.colors.tomorrow-night')
+local selected_color = require('cosmetics.colors.nord')
 local M = {}
 
 function M.setup()

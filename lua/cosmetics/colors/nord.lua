@@ -15,18 +15,19 @@ M.lightgray = '#E5E9F0'
 M.darkgray = '#3B4252'
 M.white = '#ECEFF4'
 M.fg = '#D8DEE9'
-M.bg = '#2E3440'
+M.bg = '#272c36'
 M.bg2 = '#4C566A'
 M.comment = '#616E88'
 
 M.brightened_comments = {
   M.bg2; '#4e586d'; '#505b70'; '#525d73'; '#556076'; '#576279'; '#59647c';
   '#5b677f'; '#5d6982'; '#5f6c85'; '#616e88'; '#63718b'; '#66738e'; '#687591';
-  '#6a7894'; '#6d7a96'; '#6f7d98'; '#72809a'; '#75829c'; '#78859e'; '#7b88a1'
+  '#6a7894'; '#6d7a96'; '#6f7d98'; '#72809a'; '#75829c'; '#78859e'; '#7b88a1';
+	'#8895AE'; '#95A2BB'; '#A1AEC7';
 }
 
 -- GUI colors
-local nord0_gui = M.black
+local nord0_gui = M.bg
 local nord1_gui = M.darkgray
 local nord2_gui = '#434C5E'
 local nord3_gui = M.bg2
@@ -77,7 +78,7 @@ local basic_scheme = function()
   hi('Cursor', {guifg = nord0_gui; guibg = nord4_gui})
   hi('CursorLine', {guibg = nord1_gui; ctermbg = nord1_term})
   hi('iCursor', {guifg = nord0_gui; guibg = nord4_gui})
-  hi('LineNr', {guifg = M.brightened_comments[3]; ctermfg = nord3_term})
+  hi('LineNr', {guifg = M.brightened_comments[11]; ctermfg = nord3_term})
   hi('MatchParen', {
     guifg = nord8_gui;
     guibg = nord3_gui;
@@ -180,7 +181,7 @@ end
 local setup_misc = function()
   hi('CursorColumn', {guibg = nord1_gui; ctermbg = nord1_term})
   hi('CursorLineNr',
-     {guifg = nord4_gui; guibg = nord1_gui; ctermbg = nord1_term})
+     {guifg = nord7_gui; guibg = nord1_gui; ctermfg = nord7_term; ctermbg = nord1_term})
   hi('Folded', {
     guifg = M.brightened_comments[21];
     guibg = nord1_gui;
@@ -313,7 +314,7 @@ local setup_langbase = function()
   hi('Boolean', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Character', {guifg = nord14_gui; ctermfg = nord14_term})
   hi('Comment',
-     {guifg = M.brightened_comments[19]; ctermfg = nord3_term; gui = 'italic'})
+     {guifg = M.brightened_comments[23]; ctermfg = nord3_term; gui = 'italic'})
   hi('Conditional', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Constant', {guifg = nord4_gui; gui = 'bold'})
   hi('Define', {guifg = nord9_gui; ctermfg = nord9_term})
@@ -321,7 +322,7 @@ local setup_langbase = function()
   hi('Exception', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Float', {guifg = nord15_gui; ctermfg = nord15_term})
   hi('Function', {guifg = nord8_gui; ctermfg = nord8_term})
-  hi('Identifier', {guifg = nord5_gui; ctermfg = nord5_term})
+  hi('Identifier', {guifg = nord5_gui; ctermfg = nord5_term; gui = 'italic'})
   hi('Include', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Keyword', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Label', {guifg = nord13_gui; ctermfg = nord13_term})
@@ -428,7 +429,7 @@ local setup_plugin_colors = function()
   hi('StCommandSep', {guifg = nord13_gui; guibg = nord1_gui})
   hi('StPromptSep', {guifg = nord14_gui; guibg = nord1_gui})
   hi('StTermSep', {guifg = nord11_gui; guibg = nord1_gui})
-  hi('StLine', {guifg = M.brightened_comments[21]; gui = 'bold'})
+  hi('StLine', {guifg = M.brightened_comments[23]; gui = 'bold'})
   hi('StFunctionIndicator', {guifg = nord8_gui; gui = 'bold'})
   hi('StFunctionName', {guifg = M.brightened_comments[21]; gui = 'italic'})
   hi('StFileName', {guifg = M.brightened_comments[16]; gui = 'bold'})
