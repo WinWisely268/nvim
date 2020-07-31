@@ -28,6 +28,7 @@ local function setup_plugin_options()
   local plugin_options = {
     -- neoformat
     neoformat_lua_luaformatter = {exe = 'lua-format'};
+		neoformat_rust_rustfmt = {exe = 'rustfmt', args = {'--edition', '2018'} };
     -- Pear tree
     pear_tree_map_special_keys = 0;
     -- vim-go

@@ -75,3 +75,8 @@ local fold_augroup = {
   }
 }
 require('lib.au').create_augroups(fold_augroup)
+
+--  create command to reset treesitter highlights
+vim.cmd(
+	[[command! -nargs=0 TSRestart :write | edit | TSBufEnable highlight]]
+)
