@@ -44,7 +44,7 @@ return require('packer').startup(function()
   -- Tree-sitter
   use {'nvim-treesitter/nvim-treesitter'; opt = true}
   -- Golang stuff
-  use {'fatih/vim-go'; opt = true; ft = {'go'}}
+  -- use {'fatih/vim-go'; opt = true; ft = {'go'}}
   -- Zig stuff
   -- use 'ziglang/zig.vim'
   -- Git blame & commits
@@ -108,5 +108,6 @@ return require('packer').startup(function()
       'WikiIndex'; 'WikiFzfTags'
     }
   }
+	use 'lambdalisue/suda.vim';
 end)
 

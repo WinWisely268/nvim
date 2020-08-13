@@ -11,7 +11,9 @@ M.yellow = '#EBCB8B'
 M.blue = '#81A1C1'
 M.magenta = '#B48EAD'
 M.cyan = '#88C0D0'
+M.lightcyan = "#8FBCBB"
 M.lightgray = '#E5E9F0'
+M.orange = "#D08770"
 M.darkgray = '#3B4252'
 M.white = '#ECEFF4'
 M.fg = '#D8DEE9'
@@ -34,12 +36,12 @@ local nord3_gui = M.bg2
 local nord4_gui = M.fg
 local nord5_gui = M.lightgray
 local nord6_gui = M.white
-local nord7_gui = '#8FBCBB'
+local nord7_gui = M.lightcyan
 local nord8_gui = M.cyan
 local nord9_gui = M.blue
 local nord10_gui = '#5E81AC'
 local nord11_gui = M.red
-local nord12_gui = '#D08770'
+local nord12_gui = M.orange
 local nord13_gui = M.yellow
 local nord14_gui = M.green
 local nord15_gui = M.magenta
@@ -339,7 +341,7 @@ local setup_langbase = function()
   hi('Structure', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('Tag', {guifg = nord4_gui})
   hi('Todo', {guifg = nord12_gui; ctermfg = nord13_term})
-  hi('Type', {guifg = nord5_gui; ctermfg = nord5_term})
+  hi('Type', {guifg = nord7_gui; ctermfg = nord7_term })
   hi('Typedef', {guifg = nord9_gui; ctermfg = nord9_term})
   hi('NonText', {guifg = nord3_gui; ctermfg = nord3_term})
 

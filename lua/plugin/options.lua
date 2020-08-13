@@ -172,6 +172,10 @@ local function setup_plugin_mappings()
     ['<LEADER>fwt'] = ':WikiFzfTags<CR>';
     ['<LEADER>fm'] = '<CMD>FMOpen<CR>';
     ['<LEADER>mv'] = ':Vista<CR>';
+		-- ChadTree
+		['<LEADER>tt'] = ':CHADopen<CR>';
+		-- Suda
+		['<LEADER>sw'] = ':w suda://%';
     -- Mundo
     ['U'] = ':MundoToggle<CR>';
     -- fzf others
