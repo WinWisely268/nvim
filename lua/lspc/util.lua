@@ -2,7 +2,7 @@
 -- find project root
 -- and cd to it.
 --
-local util = require('nvim_lsp.util')
+local util = require('lspconfig.util')
 
 local maybe_ancestor = function(p)
   return util.search_ancestors(p, function(path)

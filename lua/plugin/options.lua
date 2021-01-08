@@ -82,7 +82,7 @@ local function setup_plugin_options()
     vimtex_motion_enabled = 0;
     -- Vista.vim
     vista_icon_indent = {'╰─▸ '; '├─▸ '};
-    vista_default_executive = 'nvim_lsp';
+    vista_default_executive = 'lspconfig';
     vista_fzf_preview = {'right:70%'};
     ['vista#renderer#enable_icon'] = 1;
     -- wiki root

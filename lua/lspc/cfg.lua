@@ -1,5 +1,5 @@
 local icon = require('cosmetics.devicon')
-local nvim_lsp = require('nvim_lsp')
+local lspconfig = require('lspconfig')
 local bind = require('lib.bind')
 
 local diagnostic = require('diagnostic')
@@ -107,7 +107,7 @@ local function on_attach(_)
 end
 
 local lua_dir = os.getenv('XDG_CACHE_HOME') ..
-                  '/nvim/nvim_lsp/sumneko_lua/lua-language-server/'
+                  '/nvim/lspconfig/sumneko_lua/lua-language-server/'
 local lua_bin = lua_dir .. 'bin/linux/lua-language-server'
 local lua_main = lua_dir .. 'main.lua'
 
@@ -144,7 +144,7 @@ local configs = {
 
 for server, config in pairs(configs) do
   config.on_attach = on_attach
-  nvim_lsp[server].setup(config)
+  lspconfig[server].setup(config)
 end
 
 sign_define()
