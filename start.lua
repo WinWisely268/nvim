@@ -26,18 +26,18 @@ gmap.setup_mappings()
 -- setup colorscheme , statusline, tabline
 require('cosmetics.colors').setup()
 require('cosmetics.statusline')
---  require('ts.init')
+--require('ts.init')
 --end)()
 
---vim.schedule(function()
---  require('lspc.cfg')
--- setup colorizer
---    require 'colorizer'.setup {
---        'css'; 'sass'; 'less'; 'typescript'; 'javascript'; 'vim'; 'html'; 'jsx';
---        'lua'
---    }
-require('plugin.options')
---end)
+vim.schedule(function()
+    require('lspc.cfg')
+    -- setup colorizer
+    require 'colorizer'.setup {
+        'css'; 'sass'; 'less'; 'typescript'; 'javascript'; 'vim'; 'html'; 'jsx';
+        'lua'
+    }
+    require('plugin.options')
+end)
 
 if vim.g.started_by_firenvim ~= nil then
     vim.o.laststatus = 0

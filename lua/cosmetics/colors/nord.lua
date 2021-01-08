@@ -17,7 +17,7 @@ M.orange = "#D08770"
 M.darkgray = '#3B4252'
 M.white = '#ECEFF4'
 M.fg = '#D8DEE9'
-M.bg = '#272c36'
+M.bg = '#2E3440'
 M.bg2 = '#4C566A'
 M.comment = '#616E88'
 

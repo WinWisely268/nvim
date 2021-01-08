@@ -46,16 +46,16 @@ return require('packer').startup(function()
     -- Zig stuff
     -- use 'ziglang/zig.vim'
     -- Git blame & commits
-    --    use {
-    --        'rhysd/git-messenger.vim';
-    --        opt = true;
-    --        cmd = { 'GitMessenger' };
-    --        keys = { '(gitmessenger' }
-    --    }
+    use {
+        'rhysd/git-messenger.vim';
+        opt = true;
+        cmd = { 'GitMessenger' };
+        keys = { '(gitmessenger' }
+    }
     -- GitGutter
     use { 'mhinz/vim-signify'; opt = true }
     -- Undo visualization
-    --    use { 'simnalamburt/vim-mundo'; opt = true; cmd = { 'MundoToggle' } }
+    use { 'simnalamburt/vim-mundo'; opt = true; cmd = { 'MundoToggle' } }
     -- Vimtex
     --    use { 'lervag/vimtex'; opt = true; ft = { 'tex' } }
     -- Markdown plugins
@@ -86,26 +86,26 @@ return require('packer').startup(function()
     -- pear-tree (because it annoys me to have 'common sense'
     use 'tmsvg/pear-tree'
     -- formatter
-    --    use {
-    --        'sbdchd/neoformat';
-    --        opt = true;
-    --        ft = { 'lua'; 'rust'; 'fish'; 'yaml'; 'xml'; 'json'; 'html'; 'c'; 'markdown' }
-    --    }
-    --    use {
-    --        'winwisely268/findr.vim';
-    --        opt = true;
-    --        branch = 'centered';
-    --        cmd = { 'Findr'; 'FindrLocList' }
-    --    }
-    --    use {
-    --        'lervag/wiki.vim';
-    --        opt = true;
-    --        event = { 'BufNewFile ~/Notes/**/*.md'; 'BufReadPre ~/Notes/**/*.md' };
-    --        cmd = {
-    --            'WikiJournal'; 'WikiOpen'; 'WikiFzfPages'; 'WikiFzfToc'; 'WikiEnable';
-    --            'WikiIndex'; 'WikiFzfTags'
-    --        }
-    --    }
+    use {
+        'sbdchd/neoformat';
+        opt = true;
+        ft = { 'lua'; 'rust'; 'fish'; 'yaml'; 'xml'; 'json'; 'html'; 'c'; 'markdown' }
+    }
+    use {
+        'winwisely268/findr.vim';
+        opt = true;
+        branch = 'centered';
+        cmd = { 'Findr'; 'FindrLocList' }
+    }
+    use {
+        'lervag/wiki.vim';
+        opt = true;
+        event = { 'BufNewFile ~/Notes/**/*.md'; 'BufReadPre ~/Notes/**/*.md' };
+        cmd = {
+            'WikiJournal'; 'WikiOpen'; 'WikiFzfPages'; 'WikiFzfToc'; 'WikiEnable';
+            'WikiIndex'; 'WikiFzfTags'
+        }
+    }
     use 'lambdalisue/suda.vim';
 end)
 

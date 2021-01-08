@@ -52,7 +52,7 @@ local setup = function()
     require('plugin.pkgs')
     if vim.g.vscode == nil then
         load_extras()
-        --        vcmd [[packadd! nvim-treesitter]]
+        vcmd [[packadd! nvim-treesitter]]
     end
 end
 
