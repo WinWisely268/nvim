@@ -104,9 +104,7 @@ table.insert(el_segments, icons.deviconTable['blanks'])
 -- ==
 -- == File Name
 -- ==
-local file_namer = function(_, _) return '%#StFileName#' .. el_builtin.file end
-table.insert(el_segments, file_namer)
-table.insert(el_segments, icons.deviconTable['blanks'])
+table.insert(el_segments, el_builtin.shortened_file)
 table.insert(el_segments, icons.deviconTable['blanks'])
 
 -- ==

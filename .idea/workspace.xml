@@ -6,12 +6,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9656a69-c544-4f7b-ace1-7bf80fcb32fd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/lua/cosmetics/colors/nord.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/cosmetics/colors/nord.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/plugin/init.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/init.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/plugin/pkgs.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/pkgs.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.lua" beforeDir="false" afterPath="$PROJECT_DIR$/start.lua" afterDir="false" />
-    </list>
+    <list default="true" id="d9656a69-c544-4f7b-ace1-7bf80fcb32fd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +86,7 @@
       <workItem from="1608525965031" duration="26000" />
       <workItem from="1608818550847" duration="2213000" />
       <workItem from="1609039545328" duration="32000" />
-      <workItem from="1610088712417" duration="4367000" />
+      <workItem from="1610088712417" duration="4417000" />
     </task>
     <servers />
   </component>
