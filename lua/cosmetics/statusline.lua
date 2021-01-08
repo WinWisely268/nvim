@@ -85,20 +85,20 @@ local separator_highlights = {
 -- == Mode segment
 -- ==
 local set_mode = function(_, _)
-    local mode = vim.fn.mode().mode
+    local mode = vim.api.nvim_get_mode().mode
     local higroup = mode_highlights[mode]
     local display_name = modes[mode][1]
     return el_sect.highlight(higroup, display_name)
 end
 --
---local set_mode_sep = function(_, _)
---    local mode = vim.fn.mode()
---    local higroup = separator_highlights[mode]
---    return el_sect.highlight(higroup, icons.deviconTable['right_separator'])
---end
+local set_mode_sep = function(_, _)
+    local mode = vim.api.nvim_get_mode().mode
+    local higroup = separator_highlights[mode]
+    return el_sect.highlight(higroup, icons.deviconTable['right_separator'])
+end
 --
-table.insert(el_segments, el_ext.mode)
---table.insert(el_segments, set_mode_sep)
+table.insert(el_segments, set_mode())
+table.insert(el_segments, set_mode_sep())
 table.insert(el_segments, icons.deviconTable['blanks'])
 
 -- ==
