@@ -38,6 +38,8 @@ return require('packer').startup(function()
     }
     -- Tree-sitter
     use { 'nvim-treesitter/nvim-treesitter'; opt = true }
+		use { 'nvim-treesitter/nvim-treesitter-refactor'; opt = true }
+		use { 'nvim-treesitter/nvim-treesitter-textobjects'; opt = true}
     -- Golang stuff
     -- use {'fatih/vim-go'; opt = true; ft = {'go'}}
     -- Zig stuff

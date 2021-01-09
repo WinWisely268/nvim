@@ -52,8 +52,10 @@ local setup = function()
     create_machine_specific_file()
     require('plugin.pkgs')
     if vim.g.vscode == nil then
-        load_extras()
-        vcmd [[packadd! nvim-treesitter]]
+      load_extras()
+			vcmd [[packadd! nvim-treesitter]]
+			vcmd [[packadd! nvim-treesitter-refactor]]
+      vcmd [[packadd! nvim-treesitter-textobjects]]
     end
 end
 

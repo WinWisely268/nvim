@@ -3,7 +3,7 @@ local wanted_parsers = require('ts.fts')
 require'nvim-treesitter.configs'.setup({
   highlight = {
     enable = true; -- false will disable the whole extension
-    disable = {'tsx','elm','toml','nix','swift','vue','ruby','scala','haskell','julia','php','c_sharp'}
+    disable = {'tsx','elm','swift','vue','ruby','scala','haskell','julia','php','c_sharp'}
   };
   incremental_selection = {
     -- this enables incremental selection
