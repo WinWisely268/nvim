@@ -1,3 +1,4 @@
+
 local bind = require('lib.bind')
 
 local M = {}
@@ -85,7 +86,7 @@ function M.setup_mappings()
     ['<LEADER>tmh'] = ':-tabmove<CR>';
     ['<LEADER>tmi'] = ':+tabmove<CR>';
     -- Opening a terminal window
-    ['<LEADER>/'] = ':set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>';
+    ["<LEADER>'"] = ':set splitbelow<CR>:split<CR>:res +10<CR>:term<CR>';
     -- Spelling Check with <space>sc
     ['<LEADER>msc'] = ':set spell!<CR>';
     -- Press ` to change case (instead of ~)

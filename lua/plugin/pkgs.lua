@@ -27,7 +27,6 @@ return require('packer').startup(function()
     -- Builtin lsp
     use { 'neovim/nvim-lspconfig'; opt = true }
     -- Completion for lsp
-    --    use { 'nvim-lua/completion-nvim'; opt = true }
     use {
         'nvim-lua/completion-nvim';
         opt = true;
@@ -37,8 +36,6 @@ return require('packer').startup(function()
             { 'hrsh7th/vim-vsnip-integ'; opt = true; after = 'nvim-lspconfig' }
         }
     }
-    -- Diagnostics for lsp
-    use { 'nvim-lua/diagnostic-nvim'; opt = true; after = 'nvim-lspconfig' }
     -- Tree-sitter
     use { 'nvim-treesitter/nvim-treesitter'; opt = true }
     -- Golang stuff
@@ -79,7 +76,7 @@ return require('packer').startup(function()
     use 'justinmk/vim-sneak'
     -- Calendar inside vim
     -- use {'itchyny/calendar.vim'; opt = true; cmd = {'Calendar'}}
-    -- Pretty please with a cherry on top
+		-- Pretty please with a cherry on top
     use 'tpope/vim-commentary'
     -- Firenvim (nvim inside firefox)
     --    use { 'glacambre/firenvim'; opt = true; run = ':call firenvim#install(0)' }
@@ -107,5 +104,11 @@ return require('packer').startup(function()
         }
     }
     use 'lambdalisue/suda.vim';
+		-- native fuzzy finder
+		use {
+			'nvim-telescope/telescope.nvim';
+			opt = true;
+			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+		}
 end)
 

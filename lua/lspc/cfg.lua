@@ -2,7 +2,6 @@ local icon = require('cosmetics.devicon')
 local lspconfig = require('lspconfig')
 local bind = require('lib.bind')
 
-local diagnostic = require('diagnostic')
 local completion = require('completion')
 
 -- LSP option
@@ -57,24 +56,24 @@ for k, v in pairs(lsp_mappings) do
 end
 
 local function sign_define()
-  vim.fn.sign_define('LspDiagnosticsErrorSign', {
+  vim.fn.sign_define('LspDiagnosticsSignError', {
     text = icon.deviconTable['errors'];
     texthl = 'LspDiagnosticsError';
     linehl = ''
   })
-  vim.fn.sign_define('LspDiagnosticsWarningSign', {
+  vim.fn.sign_define('LspDiagnosticsSignWarning', {
     text = icon.deviconTable['warnings'];
     texthl = 'LspDiagnosticsWarning';
     linehl = '';
     numhl = ''
   })
-  vim.fn.sign_define('LspDiagnosticsInformationSign', {
+  vim.fn.sign_define('LspDiagnosticsSignInformation', {
     text = icon.deviconTable['info'];
     texthl = 'LspDiagnosticsInformation';
     linehl = '';
     numhl = ''
   })
-  vim.fn.sign_define('LspDiagnosticsHintSign', {
+  vim.fn.sign_define('LspDiagnosticsSignHint', {
     text = icon.deviconTable['hints'];
     texthl = 'LspDiagnosticsHint';
     linehl = '';
@@ -83,7 +82,6 @@ local function sign_define()
 end
 
 local function on_attach(_)
-  diagnostic.on_attach()
   completion.on_attach({
     sorting = 'alphabet';
     matching_strategy_list = {'exact'; 'fuzzy'}
@@ -91,8 +89,9 @@ local function on_attach(_)
   local mapping = {
     ['K'] = ':lua vim.lsp.buf.hover()<CR>';
     ['jv'] = ':lua vim.lsp.util.show_line_diagnostics()<CR>';
-    ['je'] = ':PrevDiagnosticCycle<CR>';
-    ['jn'] = ':NextDiagnosticCycle<CR>';
+    ['je'] = ':lua vim.lsp.diagnostic.goto_prev()<CR>';
+    ['jn'] = ':lua vim.lsp.diagnostic.goto_next()<CR>';
+		['jl'] = ':lua vim.lsp.diagnostic.set_loclist()<CR>';
     ['ge'] = ':lua vim.lsp.buf.declaration()<CR>';
     ['gd'] = ':lua vim.lsp.buf.definition()<CR>';
     ['gi'] = ':lua vim.lsp.buf.implementation()<CR>';
@@ -107,8 +106,8 @@ local function on_attach(_)
 end
 
 local lua_dir = os.getenv('XDG_CACHE_HOME') ..
-                  '/nvim/lspconfig/sumneko_lua/lua-language-server/'
-local lua_bin = lua_dir .. 'bin/linux/lua-language-server'
+                  '/nvim/nvim-lsp/sumneko_lua/lua-language-server/'
+local lua_bin = lua_dir .. 'bin/Linux/lua-language-server'
 local lua_main = lua_dir .. 'main.lua'
 
 -- SERVERS
@@ -135,6 +134,8 @@ local configs = {
   };
   -- HTML
   html = {};
+	-- HLS
+	hls = {};
   -- Rust
   rust_analyzer = {};
   -- Vim
@@ -148,3 +149,28 @@ for server, config in pairs(configs) do
 end
 
 sign_define()
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable underline, use default values
+    underline = true;
+    -- Enable virtual text, override spacing to 4
+    -- virtual_text = {
+    --   spacing = 4;
+    --   prefix = '~';
+    -- },
+    -- Use a function to dynamically turn signs off
+    -- and on, using buffer local variables
+    signs = function(bufnr, client_id)
+      local ok, result = pcall(vim.api.nvim_buf_get_var, bufnr, 'show_signs')
+      -- No buffer local variable set, so just enable by default
+      if not ok then
+        return true
+      end
+      return result
+    end,
+    -- Disable a feature
+    update_in_insert = true,
+  }
+)
+

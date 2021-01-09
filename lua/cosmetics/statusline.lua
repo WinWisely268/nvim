@@ -204,22 +204,22 @@ table.insert(el_segments, '%=')
 -- ==
 -- == LSP Diagnostic Status
 -- ==
---local function get_all_diagnostics()
---    local result = {}
---    local levels = {
---        errors = 'Error';
---        warnings = 'Warning';
---        info = 'Information';
---        hints = 'Hint'
---    }
---
---    for k, level in pairs(levels) do
---        result[k] = vim.lsp.diagnostic.get_count(level)
---    end
---
---    return result
---end
---
+local function get_all_diagnostics()
+    local result = {}
+    local levels = {
+        errors = 'Error';
+        warnings = 'Warning';
+        info = 'Information';
+        hints = 'Hint'
+    }
+		
+    for k, level in pairs(levels) do
+        result[k] = vim.lsp.diagnostic.get_count(level)
+    end
+
+    return result
+end
+
 ---------
 local function diag_status()
     local buf_diagnostics = get_all_diagnostics()

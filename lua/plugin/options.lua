@@ -82,7 +82,7 @@ local function setup_plugin_options()
     vimtex_motion_enabled = 0;
     -- Vista.vim
     vista_icon_indent = {'╰─▸ '; '├─▸ '};
-    vista_default_executive = 'lspconfig';
+    vista_default_executive = 'nvim_lsp';
     vista_fzf_preview = {'right:70%'};
     ['vista#renderer#enable_icon'] = 1;
     -- wiki root
@@ -152,25 +152,27 @@ local function setup_plugin_mappings()
     ['<LEADER>ss'] = ':SessSave';
     ['<LEADER>sl'] = [[:lua require('plugin.extra.fzf').load_sessions()<CR>]];
     -- FZF & Vista
-    ['<LEADER>ot'] = ':Findr<CR>';
-    ['<LEADER>ff'] = ':Files<CR>';
+    ['<LEADER>ot'] = [[:lua require('telescope.builtin').find_files({previewer = false})<CR>]];
+    -- ['<LEADER>ff'] = ':Files<CR>';
+		['<LEADER>ff'] = ':Telescope find_files<CR>';
     -- Grep with ripgrep
-    ['<LEADER>fg'] = ':Rg<CR>';
+    ['<LEADER>fg'] = ':Telescope live_grep<CR>';
     ['<LEADER>f/'] = ':History<CR>';
-    ['<LEADER>fh'] = ':Help<CR>';
-    ['<LEADER>fl'] = ':Lines<CR>';
+    ['<LEADER>fh'] = ':Telescope help_tags<CR>';
+    ['<LEADER>fl'] = ':Telescope current_buffer_fuzzy_find<CR>';
     ['<LEADER>fb'] = ':Buffers<CR>';
-    ['<leader>f:'] = ':Commands<CR>';
+    ['<leader>f:'] = ':Telescope commands<CR>';
     -- Project wide tags
     ['<LEADER>fp'] = ':Tags<CR>';
-    ['<LEADER>fgc'] = ':Commits<CR>';
+    ['<LEADER>fgc'] = ':Telescope commits<CR>';
+		['<LEADER>fgb'] = ':Telescope git_branch<CR>';
     -- Current buffer tags
-    ['<leader>ft'] = ':Vista finder<CR>';
-    ['<LEADER>fjl'] = ':FindrLocList<CR>';
+    ['<leader>ft'] = ':Telescope treesitter<CR>';
+    ['<LEADER>fjl'] = ':Telescope loclist<CR>';
+    ['<LEADER>fjq'] = ':Telescope quickfix<CR>';
     ['<leader>fwp'] = ':WikiFzfPages<CR>';
     ['<leader>fwc'] = ':WikiFzfToc<CR>';
     ['<LEADER>fwt'] = ':WikiFzfTags<CR>';
-    ['<LEADER>fm'] = '<CMD>FMOpen<CR>';
     ['<LEADER>mv'] = ':Vista<CR>';
 		-- ChadTree
 		['<LEADER>tt'] = ':CHADopen<CR>';
@@ -187,6 +189,7 @@ local function setup_plugin_mappings()
 end
 
 as.async(function()
+	require('plugin.extra.telescope')
   setup_plugin_options()
   setup_plugin_mappings()
   setup_plugin_autocmd()
