@@ -3,6 +3,7 @@ local plugins = require('plugin.init')
 do
   local all_installed = false
   local hererocks_done = false
+
   plugins.download()
   plugins.create_machine_specific_file()
   local done_processing_pkgs = 0
@@ -22,9 +23,10 @@ do
     end)
     if all_installed then
       vim.schedule(function()
-        local nrock = require('plenary.neorocks')
-        nrock.setup_hererocks()
-        nrock.ensure_installed('luacheck')
+      
+  local nrock = require('plenary.neorocks')
+  nrock.setup_hererocks()
+  nrock.ensure_installed('luacheck')
         nrock.ensure_installed('--server=https://luarocks.org/dev luaformatter')
         hererocks_done = true
       end)

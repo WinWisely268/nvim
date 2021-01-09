@@ -1,7 +1,6 @@
 local icon = require('cosmetics.devicon')
 local lspconfig = require('lspconfig')
 local bind = require('lib.bind')
-
 local completion = require('completion')
 
 -- LSP option
@@ -88,7 +87,7 @@ local function on_attach(_)
   })
   local mapping = {
     ['K'] = ':lua vim.lsp.buf.hover()<CR>';
-    ['jv'] = ':lua vim.lsp.util.show_line_diagnostics()<CR>';
+    ['jv'] = ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>';
     ['je'] = ':lua vim.lsp.diagnostic.goto_prev()<CR>';
     ['jn'] = ':lua vim.lsp.diagnostic.goto_next()<CR>';
 		['jl'] = ':lua vim.lsp.diagnostic.set_loclist()<CR>';
@@ -154,6 +153,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     -- Enable underline, use default values
     underline = true;
+		virtual_text = false;
     -- Enable virtual text, override spacing to 4
     -- virtual_text = {
     --   spacing = 4;

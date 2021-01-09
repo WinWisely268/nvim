@@ -154,7 +154,7 @@ local function setup_plugin_mappings()
     -- FZF & Vista
     ['<LEADER>ot'] = [[:lua require('telescope.builtin').find_files({previewer = false})<CR>]];
     -- ['<LEADER>ff'] = ':Files<CR>';
-		['<LEADER>ff'] = ':Telescope find_files<CR>';
+    ['<LEADER>ff'] = ':Telescope find_files<CR>';
     -- Grep with ripgrep
     ['<LEADER>fg'] = ':Telescope live_grep<CR>';
     ['<LEADER>f/'] = ':History<CR>';
@@ -174,10 +174,10 @@ local function setup_plugin_mappings()
     ['<leader>fwc'] = ':WikiFzfToc<CR>';
     ['<LEADER>fwt'] = ':WikiFzfTags<CR>';
     ['<LEADER>mv'] = ':Vista<CR>';
-		-- ChadTree
-		['<LEADER>tt'] = ':CHADopen<CR>';
-		-- Suda
-		['<LEADER>sw'] = ':w suda://%';
+	-- ChadTree
+    ['<LEADER>tt'] = ':CHADopen<CR>';
+    -- Suda
+    ['<LEADER>sw'] = ':w suda://%';
     -- Mundo
     ['U'] = ':MundoToggle<CR>';
     -- fzf others
@@ -189,7 +189,7 @@ local function setup_plugin_mappings()
 end
 
 as.async(function()
-	require('plugin.extra.telescope')
+  require('plugin.extra.telescope')
   setup_plugin_options()
   setup_plugin_mappings()
   setup_plugin_autocmd()

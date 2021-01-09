@@ -1,6 +1,9 @@
 local wanted_parsers = require('ts.fts')
 -- setup treesitter
 require'nvim-treesitter.configs'.setup({
+	indent = {
+    enable = true
+  };
   highlight = {
     enable = true; -- false will disable the whole extension
     disable = {'tsx','elm','swift','vue','ruby','scala','haskell','julia','php','c_sharp'}
@@ -17,37 +20,52 @@ require'nvim-treesitter.configs'.setup({
     }
   };
   textobjects = { -- syntax-aware textobjects
-    enable = true;
-    disable = {};
-    keymaps = {
-      ['af'] = '@function.outer';
-      ['if'] = '@function.inner';
-      ['aC'] = '@class.outer';
-      ['iC'] = '@class.inner';
-      ['ac'] = '@conditional.outer';
-      ['ic'] = '@conditional.inner';
-      ['ae'] = '@block.outer';
-      ['ie'] = '@block.inner';
-      ['al'] = '@loop.outer';
-      ['il'] = '@loop.inner';
-      ['is'] = '@statement.inner';
-      ['as'] = '@statement.outer';
-      ['ad'] = '@comment.outer';
-      ['am'] = '@call.outer';
-      ['im'] = '@call.inner'
-    }
-  };
-  node_movement = {
-    -- this enables incremental selection
-    enable = true;
-    highlight_current_node = false;
-    disable = {};
-    keymaps = {
-      move_up = '<a-e>';
-      move_down = '<a-n>';
-      move_left = '<a-h>';
-      move_right = '<a-i>'
-    }
+	 -- lsp_interop = {
+      -- enable = true,
+      -- peek_definition_code = {
+        -- ["df"] = "@function.outer",
+        -- ["dF"] = "@class.outer",
+      -- },
+    -- },
+		move = {
+      enable = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+	  select = {
+        enable = true,
+        keymaps = {
+          ['af'] = '@function.outer';
+          ['if'] = '@function.inner';
+          ['aC'] = '@class.outer';
+          ['iC'] = '@class.inner';
+          ['ac'] = '@conditional.outer';
+          ['ic'] = '@conditional.inner';
+          ['ae'] = '@block.outer';
+          ['ie'] = '@block.inner';
+          ['al'] = '@loop.outer';
+          ['il'] = '@loop.inner';
+          ['is'] = '@statement.inner';
+          ['as'] = '@statement.outer';
+          ['ad'] = '@comment.outer';
+          ['am'] = '@call.outer';
+          ['im'] = '@call.inner'
+        }
+    },
   };
   refactor = {
     highlight_current_scope = {enable = false};
