@@ -1,12 +1,11 @@
 local icons = require('cosmetics.devicon')
 local status_ok, el = pcall(require, 'el')
---if status_ok then
+if status_ok then
 local el_segments = {}
 local el_sect = require('el.sections')
 local el_subscribe = require('el.subscribe')
 local el_helper = require('el.helper')
 local el_builtin = require('el.builtin')
-local el_ext = require('el.extensions')
 local luvjob = require('luvjob')
 ------------------------------------------------------------------------
 -- StatusLine                             --
@@ -136,7 +135,7 @@ local parse_shortstat_output = function(s)
 
     local changed = { git_changed:match_str(s) }
     if not vim.tbl_isempty(changed) then
-        local changed = '%#SignifySignChange# +' ..
+        changed = '%#SignifySignChange# +' ..
                 string.sub(s, changed[1] + 1, changed[2])
         table.insert(result, changed)
     end
@@ -204,25 +203,28 @@ table.insert(el_segments, '%=')
 -- ==
 -- == LSP Diagnostic Status
 -- ==
-local function get_all_diagnostics()
-    local result = {}
-    local levels = {
-        errors = 'Error';
-        warnings = 'Warning';
-        info = 'Information';
-        hints = 'Hint'
-    }
-		
-    for k, level in pairs(levels) do
-        result[k] = vim.lsp.diagnostic.get_count(level)
-    end
+local function get_all_diagnostics(bufnr)
+  local result = {}
+  local levels = {
+    errors = 'Error',
+    warnings = 'Warning',
+    info = 'Information',
+    hints = 'Hint'
+  }
 
-    return result
+  for k, level in pairs(levels) do
+    result[k] = vim.lsp.diagnostic.get_count(bufnr, level)
+  end
+
+  return result
 end
-
 ---------
-local function diag_status()
-    local buf_diagnostics = get_all_diagnostics()
+local function diag_status(bufnr)
+	  bufnr = bufnr or 0
+		if #vim.lsp.buf_get_clients(bufnr) == 0 then
+			return ''
+		end
+    local buf_diagnostics = get_all_diagnostics(bufnr)
     local parts = {}
     if buf_diagnostics.errors and buf_diagnostics.errors > 0 then
         table.insert(parts,
@@ -251,8 +253,8 @@ local function diag_status()
     return errors .. warnings .. hints .. infos
 end
 
-local dstatus = function(_, _)
-    local ds = diag_status()
+local dstatus = function(_, buffer)
+    local ds = diag_status(buffer.bufnr)
     return ds ~= '' and ds or ''
 end
 
@@ -277,5 +279,5 @@ table.insert(el_segments, line_function)
 local set_status = function() return el_segments end
 
 --return el.set_statusline_generator(set_status)
-require('el').setup { generator = set_status }
---end
+el.setup { generator = set_status }
+end

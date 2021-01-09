@@ -170,7 +170,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       return result
     end,
     -- Disable a feature
-    update_in_insert = true,
+    -- update_in_insert = true,
   }
 )
 
