@@ -11,8 +11,8 @@ lua require('plugin.init').setup()
 " ==
 " == Load main configs
 " ==
-"if !exists('g:vscode')
+if !exists('g:vscode')
 	luafile ~/.config/nvim/start.lua
-"else
-"	luafile ~/.config/nvim/mini.lua
-"endif
+else
+	luafile ~/.config/nvim/mini.lua
+endif
