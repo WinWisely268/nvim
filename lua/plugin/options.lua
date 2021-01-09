@@ -81,10 +81,10 @@ local function setup_plugin_options()
     vimtex_text_obj_enabled = 0;
     vimtex_motion_enabled = 0;
     -- Vista.vim
-    vista_icon_indent = {'╰─▸ '; '├─▸ '};
-    vista_default_executive = 'nvim_lsp';
-    vista_fzf_preview = {'right:70%'};
-    ['vista#renderer#enable_icon'] = 1;
+    -- vista_icon_indent = {'╰─▸ '; '├─▸ '};
+    -- vista_default_executive = 'nvim_lsp';
+    -- vista_fzf_preview = {'right:70%'};
+    -- ['vista#renderer#enable_icon'] = 1;
     -- wiki root
     wiki_root = '~/Notes/';
     wiki_filetypes = {'md'};
@@ -150,38 +150,32 @@ local function setup_plugin_mappings()
     [',wt'] = '<plug>(wiki-page-toc)';
     -- sessions
     ['<LEADER>ss'] = ':SessSave';
-    ['<LEADER>sl'] = [[:lua require('plugin.extra.fzf').load_sessions()<CR>]];
+    -- ['<LEADER>sl'] = [[:lua require('plugin.extra.fzf').load_sessions()<CR>]];
     -- FZF & Vista
     ['<LEADER>ot'] = [[:lua require('telescope.builtin').find_files({previewer = false})<CR>]];
     -- ['<LEADER>ff'] = ':Files<CR>';
-    ['<LEADER>ff'] = ':Telescope find_files<CR>';
+    ['<LEADER>ff'] = ':Telescope find_files_workspace<CR>';
     -- Grep with ripgrep
-    ['<LEADER>fg'] = ':Telescope live_grep<CR>';
-    ['<LEADER>f/'] = ':History<CR>';
+    ['<LEADER>fg'] = ':Telescope live_grep_workspace<CR>';
+    ['<LEADER>f/'] = ':Telescope find_files_workspace<CR>';
     ['<LEADER>fh'] = ':Telescope help_tags<CR>';
     ['<LEADER>fl'] = ':Telescope current_buffer_fuzzy_find<CR>';
-    ['<LEADER>fb'] = ':Buffers<CR>';
+    ['<LEADER>fb'] = ':Telescope buffers<CR>';
     ['<leader>f:'] = ':Telescope commands<CR>';
     -- Project wide tags
     ['<LEADER>fp'] = ':Tags<CR>';
     ['<LEADER>fgc'] = ':Telescope commits<CR>';
-		['<LEADER>fgb'] = ':Telescope git_branch<CR>';
+    ['<LEADER>fgb'] = ':Telescope git_branch<CR>';
     -- Current buffer tags
     ['<leader>ft'] = ':Telescope treesitter<CR>';
     ['<LEADER>fjl'] = ':Telescope loclist<CR>';
     ['<LEADER>fjq'] = ':Telescope quickfix<CR>';
-    ['<leader>fwp'] = ':WikiFzfPages<CR>';
-    ['<leader>fwc'] = ':WikiFzfToc<CR>';
-    ['<LEADER>fwt'] = ':WikiFzfTags<CR>';
-    ['<LEADER>mv'] = ':Vista<CR>';
-	-- ChadTree
-    ['<LEADER>tt'] = ':CHADopen<CR>';
     -- Suda
     ['<LEADER>sw'] = ':w suda://%';
     -- Mundo
     ['U'] = ':MundoToggle<CR>';
     -- fzf others
-    ['<LEADER>fk'] = [[:lua require('plugin.extra.fzf').kill_buffers()<CR>]];
+    -- ['<LEADER>fk'] = [[:lua require('plugin.extra.fzf').kill_buffers()<CR>]];
   }
   for k, v in pairs(nmappings) do
     bind.map.n(k, v, {noremap = false; silent = true})
@@ -190,6 +184,8 @@ end
 
 as.async(function()
   require('plugin.extra.telescope')
+	require'telescope'.load_extension 'fzy_native'
+  require'telescope'.load_extension 'builtin_extras'
   setup_plugin_options()
   setup_plugin_mappings()
   setup_plugin_autocmd()

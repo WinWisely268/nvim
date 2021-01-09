@@ -34,7 +34,7 @@ local function load_extras()
     -- ==
     -- == Load optional packages when vscode-neovim is not active.
     local extra_pkgs = {
-        'vim-signify'; -- git
+        -- 'vim-signify'; -- git
         'completion-nvim'; -- LSP Stuff
         'vim-vsnip'; 'vim-vsnip-integ'; -- snippets
         'nvim-lspconfig'; -- builtin LSP
@@ -53,9 +53,10 @@ local setup = function()
     require('plugin.pkgs')
     if vim.g.vscode == nil then
       load_extras()
-			vcmd [[packadd! nvim-treesitter]]
-			vcmd [[packadd! nvim-treesitter-refactor]]
+      vcmd [[packadd! nvim-treesitter]]
+      vcmd [[packadd! nvim-treesitter-refactor]]
       vcmd [[packadd! nvim-treesitter-textobjects]]
+      vcmd [[packadd! telescope-fzy-native.nvim]]
     end
 end
 

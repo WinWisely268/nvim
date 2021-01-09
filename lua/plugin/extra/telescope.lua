@@ -1,11 +1,6 @@
-local builtin = require('telescope.builtin')
+local actions = require 'telescope.actions'
 
-local function get_workspace_folder ()
-  return vim.lsp.buf.list_workspace_folders()[1] or vim.fn.systemlist('git rev-parse --show-toplevel')[1]
-end
-
-return require('telescope').register_extension {
-  setup = function()
+require('telescope').setup {
       defaults = {
           prompt_position = "top",
           prompt_prefix = "➜ ",
@@ -24,22 +19,17 @@ return require('telescope').register_extension {
           color_devicons = true,
           use_less = true,
           set_env = { ['COLORTERM'] = 'truecolor' }, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
+         	mappings = {
+               n = {
+                 ['<CR>'] = actions.goto_file_selection_edit + actions.center,
+                 s = actions.goto_file_selection_split,
+                 v = actions.goto_file_selection_vsplit,
+                 t = actions.goto_file_selection_tabedit,
+                 j = actions.move_selection_next,
+                 k = actions.move_selection_previous,
+                 u = actions.preview_scrolling_up,
+                 d = actions.preview_scrolling_down,
+               },
+					},
       }
-
-    builtin.live_grep_workspace = function(opts)
-      opts.cwd = get_workspace_folder()
-      builtin.live_grep(opts)
-    end
-
-    builtin.find_files_workspace = function(opts)
-      opts.cwd = get_workspace_folder()
-      builtin.find_files(opts)
-    end
-
-    builtin.grep_string_workspace = function(opts)
-      opts.cwd = get_workspace_folder()
-      builtin.grep_string(opts)
-    end
-
-  end;
 }

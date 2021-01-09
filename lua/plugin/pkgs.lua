@@ -12,16 +12,16 @@ return require('packer').startup(function()
     -- Fastest colorizer (for real)
     use { 'norcalli/nvim-colorizer.lua'; opt = true }
     -- Fuzzy finder
-    use {
-        'junegunn/fzf.vim';
-        opt = true;
-        cmd = {
-            'Files'; 'Rg'; 'History'; 'Commands'; 'Help'; 'Lines'; 'Buffers';
-            'Commits'; 'Tags'; 'BTags'
-        }
-    }
+    -- use {
+    --     'junegunn/fzf.vim';
+    --     opt = true;
+    --     cmd = {
+    --         'Files'; 'Rg'; 'History'; 'Commands'; 'Help'; 'Lines'; 'Buffers';
+    --         'Commits'; 'Tags'; 'BTags'
+    --     }
+    -- }
     -- Tag finder
-    use { 'liuchengxu/vista.vim'; opt = true; cmd = { 'Vista' } }
+    -- use { 'liuchengxu/vista.vim'; opt = true; cmd = { 'Vista' } }
     -- Debugger, following Debug Adapter Protocol
     -- use {'mfussenegger/nvim-dap', opt = true, ft = {'rust', 'py'}}
     -- Builtin lsp
@@ -90,12 +90,12 @@ return require('packer').startup(function()
         opt = true;
         ft = { 'lua'; 'rust'; 'fish'; 'yaml'; 'xml'; 'json'; 'html'; 'c'; 'markdown' }
     }
-    use {
-        'winwisely268/findr.vim';
-        opt = true;
-        branch = 'centered';
-        cmd = { 'Findr'; 'FindrLocList' }
-    }
+    -- use {
+    --     'winwisely268/findr.vim';
+    --     opt = true;
+    --     branch = 'centered';
+    --     cmd = { 'Findr'; 'FindrLocList' }
+    -- }
     use {
         'lervag/wiki.vim';
         opt = true;
@@ -112,5 +112,6 @@ return require('packer').startup(function()
 			opt = true;
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 		}
+    use { 'nvim-telescope/telescope-fzy-native.nvim', opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
 end)
 
