@@ -163,7 +163,7 @@ local function setup_plugin_mappings()
     ['<LEADER>fb'] = ':Telescope buffers<CR>';
     ['<leader>f:'] = ':Telescope commands<CR>';
     -- Project wide tags
-    ['<LEADER>fp'] = ':Tags<CR>';
+    ['<LEADER>fp'] = [[:lua require'telescope'.extensions.project.project{}<CR>]];
     ['<LEADER>fgc'] = ':Telescope commits<CR>';
     ['<LEADER>fgb'] = ':Telescope git_branch<CR>';
     -- Current buffer tags
@@ -184,6 +184,7 @@ end
 
 as.async(function()
   require('plugin.extra.telescope')
+	require'telescope'.load_extension 'project'
 	require'telescope'.load_extension 'fzy_native'
   require'telescope'.load_extension 'builtin_extras'
   setup_plugin_options()

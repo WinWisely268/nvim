@@ -113,5 +113,6 @@ return require('packer').startup(function()
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 		}
     use { 'nvim-telescope/telescope-fzy-native.nvim', opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
+    use { 'nvim-telescope/telescope-project.nvim', opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
 end)
 

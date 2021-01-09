@@ -57,6 +57,7 @@ local setup = function()
       vcmd [[packadd! nvim-treesitter-refactor]]
       vcmd [[packadd! nvim-treesitter-textobjects]]
       vcmd [[packadd! telescope-fzy-native.nvim]]
+      vcmd [[packadd! telescope-project.nvim]]
     end
 end
 
