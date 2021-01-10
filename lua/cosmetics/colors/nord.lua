@@ -388,15 +388,32 @@ local setup_markdown = function()
 end
 
 local setup_plugin_colors = function()
+	-- LSP DIAGNOSTICS
   hi('LSPDiagnosticsWarning', {guifg = nord13_gui; ctermfg = nord13_term})
   hi('LSPDiagnosticsError', {guifg = nord11_gui; ctermfg = nord11_term})
   hi('LSPDiagnosticsInformation', {guifg = nord8_gui; ctermfg = nord8_term})
   hi('LSPDiagnosticsHint', {guifg = nord10_gui; ctermfg = nord10_term})
+	-- VIM SIGNIFY
   hi('SignifySignAdd', {guifg = nord14_gui; ctermfg = nord14_term})
   hi('SignifySignChange', {guifg = nord13_gui; ctermfg = nord13_term})
   hi('SignifySignChangeDelete', {guifg = nord11_gui; ctermfg = nord11_term})
   hi('SignifySignDelete', {guifg = nord11_gui; ctermfg = nord11_term})
-
+	-- GitSigns
+  hi('GitSignsAddNr', {guifg = nord14_gui; ctermfg = nord14_term})
+  hi('GitSignsChangeNr', {guifg = nord13_gui; ctermfg = nord13_term})
+  hi('GitSignsDeleteNr', {guifg = nord11_gui; ctermfg = nord11_term})
+	-- Telescope nvim
+  hi('TelescopeSelection',      {guifg = nord8_gui, gui = 'bold'}) -- selected item
+  hi('TelescopeSelectionCaret', {guifg = nord13_gui }) -- selection caret
+  hi('TelescopeMultiSelection', {guifg = nord10_gui }) -- multisections
+  hi('TelescopeNormal',         {guibg = nord0_gui })  -- floating windows created by telescope.
+  hi('TelescopeBorder',         {guifg = nord3_gui})
+  hi('TelescopePromptBorder',   {guifg = nord4_gui})
+  hi('TelescopeResultsBorder',  {guifg = nord3_gui})
+  hi('TelescopePreviewBorder',  {guifg = nord3_gui})
+  hi('TelescopeMatching',     {guifg = nord8_gui})
+  hi('TelescopePromptPrefix', {guifg = nord11_gui})
+	-- Vim Sneak
   hi('Sneak', {
     guifg = nord0_gui;
     guibg = nord13_gui;
@@ -415,6 +432,7 @@ local setup_plugin_colors = function()
     ctermbg = nord13_term;
     gui = 'bold'
   })
+	-- Statusline
   hi('StNormal', {guibg = nord9_gui; guifg = nord0_gui; gui = 'bold'})
   hi('StVisual', {guibg = nord15_gui; guifg = nord0_gui; gui = 'bold'})
   hi('StSelect', {guibg = nord14_gui; guifg = nord0_gui; gui = 'bold'})
@@ -436,7 +454,7 @@ local setup_plugin_colors = function()
   hi('StFunctionName', {guifg = M.brightened_comments[21]; gui = 'italic'})
   hi('StFileName', {guifg = M.brightened_comments[16]; gui = 'bold'})
   hi('StGitBranch', {guifg = M.brightened_comments[19]})
-
+	-- El ==> Express_line.nvim
   hilink('ElNormal', 'StNormal')
   hilink('ElNormalOperatorPending', 'StNormal')
   hilink('ElVisual', 'StVisual')

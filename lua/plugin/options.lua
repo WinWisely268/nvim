@@ -69,10 +69,10 @@ local function setup_plugin_options()
     -- vim-sneak
     ['sneak#label'] = 1;
     -- vim-signify
-    signify_sign_add = '▋';
-    signify_sign_delete = '▋';
-    signify_sign_delete_first_line = '▋';
-    signify_sign_change = '▋';
+    -- signify_sign_add = '▋';
+    -- signify_sign_delete = '▋';
+    -- signify_sign_delete_first_line = '▋';
+    -- signify_sign_change = '▋';
     -- vim-table-mode
     table_mode_cell_text_object_i_map = 'k<Bar>';
     -- vimtex
@@ -193,6 +193,7 @@ as.async(function()
   local lua_ft = require('plugin.langs.lua.init')
   lua_ft.setup_lua_autocmd()
   require('plugin.extra.wiki')
+	require('plugin.extra.gitsigns')
   require('lib.sessions').save()
 end)()
 

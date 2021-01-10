@@ -23,7 +23,7 @@ return require('packer').startup(function()
     -- Tag finder
     -- use { 'liuchengxu/vista.vim'; opt = true; cmd = { 'Vista' } }
     -- Debugger, following Debug Adapter Protocol
-    -- use {'mfussenegger/nvim-dap', opt = true, ft = {'rust', 'py'}}
+    use {'mfussenegger/nvim-dap', opt = true, ft = {'rust', 'py'}}
     -- Builtin lsp
     use { 'neovim/nvim-lspconfig'; opt = true }
     -- Completion for lsp
@@ -52,7 +52,14 @@ return require('packer').startup(function()
         keys = { '(gitmessenger' }
     }
     -- GitGutter
-    use { 'mhinz/vim-signify'; opt = true }
+    -- use { 'mhinz/vim-signify'; opt = true }
+		use {
+			'lewis6991/gitsigns.nvim';
+			opt = true;
+			requires = {
+				'nvim-lua/plenary.nvim'
+			}
+		}
     -- Undo visualization
     use { 'simnalamburt/vim-mundo'; opt = true; cmd = { 'MundoToggle' } }
     -- Vimtex
@@ -112,7 +119,8 @@ return require('packer').startup(function()
 			opt = true;
 			requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 		}
-    use { 'nvim-telescope/telescope-fzy-native.nvim', opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
-    use { 'nvim-telescope/telescope-project.nvim', opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
+    use { 'nvim-telescope/telescope-fzy-native.nvim'; opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
+    use { 'nvim-telescope/telescope-project.nvim'; opt = true, requires = {{'nvim-telescope/telescope.nvim'}} }
+		use { 'kyazdani42/nvim-web-devicons'}
 end)
 

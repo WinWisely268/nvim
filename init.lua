@@ -30,11 +30,11 @@ else
         -- setup colorscheme , statusline, tabline
         require('cosmetics.colors').setup()
         require('cosmetics.statusline')
+        require('lspc.cfg')
         require('ts.init')
     end)()
 
     vim.schedule(function()
-        require('lspc.cfg')
         -- setup colorizer
         require 'colorizer'.setup {
             'css'; 'sass'; 'less'; 'typescript'; 'javascript'; 'vim'; 'html'; 'jsx';

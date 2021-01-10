@@ -34,13 +34,13 @@ local function load_extras()
     -- ==
     -- == Load optional packages when vscode-neovim is not active.
     local extra_pkgs = {
-        -- 'vim-signify'; -- git
+        'plenary.nvim';
+        'luvjob.nvim'; -- lib uv job
+				'gitsigns.nvim';
         'completion-nvim'; -- LSP Stuff
         'vim-vsnip'; 'vim-vsnip-integ'; -- snippets
         'nvim-lspconfig'; -- builtin LSP
         'nvim-colorizer.lua'; -- fastest colorizer
-        'plenary.nvim';
-        'luvjob.nvim'; -- lib uv job
         'express_line.nvim'; -- expressline
         'telescope.nvim'; 'popup.nvim' -- vim telescope
     }
