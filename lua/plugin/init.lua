@@ -1,17 +1,17 @@
 local vcmd = vim.cmd
 
-local config_path = vim.api.nvim_call_function('stdpath', { 'config' }):gsub('\\',
-    '/')
+local config_path = vim.api.nvim_call_function('stdpath', {'config'}):gsub('\\',
+                                                                           '/')
 
 local root = function()
-    return vim.api.nvim_call_function('stdpath', { 'data' }):gsub('\\', '/') ..
-            '/site/pack/packer'
+    return vim.api.nvim_call_function('stdpath', {'data'}):gsub('\\', '/') ..
+               '/site/pack/packer'
 end
 
 local download = function()
     local path = root() .. '/opt/packer.nvim/'
     local url = 'https://github.com/wbthomason/packer.nvim'
-    if vim.api.nvim_call_function('filereadable', { path .. 'LICENSE' }) ~= 1 then
+    if vim.api.nvim_call_function('filereadable', {path .. 'LICENSE'}) ~= 1 then
         vim.api.nvim_command(string.format('!git clone %q %q', url, path))
     end
 end
@@ -22,8 +22,9 @@ local create_machine_specific_file = function()
     })
     if specific_file_path ~= 1 then
         vim.api.nvim_command(string.format('!cp %q %q', config_path ..
-                '/_machine_specific.lua.example',
-            config_path .. '/machine_specific.lua'))
+                                               '/_machine_specific.lua.example',
+                                           config_path ..
+                                               '/machine_specific.lua'))
     end
     vcmd([[luafile ]] .. config_path .. '/machine_specific.lua')
 end
@@ -34,15 +35,13 @@ local function load_extras()
     -- ==
     -- == Load optional packages when vscode-neovim is not active.
     local extra_pkgs = {
-        'plenary.nvim';
-        'luvjob.nvim'; -- lib uv job
-				'gitsigns.nvim';
-        'completion-nvim'; -- LSP Stuff
-        'vim-vsnip'; 'vim-vsnip-integ'; -- snippets
-        'nvim-lspconfig'; -- builtin LSP
-        'nvim-colorizer.lua'; -- fastest colorizer
-        'express_line.nvim'; -- expressline
-        'telescope.nvim'; 'popup.nvim' -- vim telescope
+        'plenary.nvim', 'luvjob.nvim', -- lib uv job
+        'gitsigns.nvim', 'completion-nvim', -- LSP Stuff
+        'vim-vsnip', 'vim-vsnip-integ', -- snippets
+        'nvim-lspconfig', -- builtin LSP
+        'nvim-colorizer.lua', -- fastest colorizer
+        'express_line.nvim', -- expressline
+        'telescope.nvim', 'popup.nvim' -- vim telescope
     }
     for _, pkg in ipairs(extra_pkgs) do loadpkg(pkg) end
 end
@@ -52,19 +51,19 @@ local setup = function()
     create_machine_specific_file()
     require('plugin.pkgs')
     if vim.g.vscode == nil then
-      load_extras()
-      vcmd [[packadd! nvim-treesitter]]
-      vcmd [[packadd! nvim-treesitter-refactor]]
-      vcmd [[packadd! nvim-treesitter-textobjects]]
-      vcmd [[packadd! telescope-fzy-native.nvim]]
-      vcmd [[packadd! telescope-project.nvim]]
+        load_extras()
+        vcmd [[packadd! nvim-treesitter]]
+        vcmd [[packadd! nvim-treesitter-refactor]]
+        vcmd [[packadd! nvim-treesitter-textobjects]]
+        vcmd [[packadd! telescope-fzy-native.nvim]]
+        vcmd [[packadd! telescope-project.nvim]]
     end
 end
 
 return {
-    setup = setup;
-    download = download;
-    create_machine_specific_file = create_machine_specific_file;
-    loadpkg = loadpkg;
-    root = root;
+    setup = setup,
+    download = download,
+    create_machine_specific_file = create_machine_specific_file,
+    loadpkg = loadpkg,
+    root = root
 }

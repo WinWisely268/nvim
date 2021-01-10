@@ -36,9 +36,9 @@ else
 
     vim.schedule(function()
         -- setup colorizer
-        require 'colorizer'.setup {
-            'css'; 'sass'; 'less'; 'typescript'; 'javascript'; 'vim'; 'html'; 'jsx';
-            'lua'
+        require'colorizer'.setup {
+            'css', 'sass', 'less', 'typescript', 'javascript', 'vim', 'html',
+            'jsx', 'lua'
         }
         require('plugin.options')
     end)
