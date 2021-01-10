@@ -90,14 +90,15 @@ return require('packer').startup(function()
     -- pear-tree (because it annoys me to have 'common sense'
     use 'tmsvg/pear-tree'
     -- formatter
-    use {
-        'sbdchd/neoformat',
-        opt = true,
-        ft = {
-            'lua', 'rust', 'fish', 'yaml', 'xml', 'json', 'html', 'c',
-            'markdown'
-        }
-    }
+    use {'mhartington/formatter.nvim'}
+    -- use {
+    --     'sbdchd/neoformat',
+    --     opt = true,
+    --     ft = {
+    --         'lua', 'rust', 'fish', 'yaml', 'xml', 'json', 'html', 'c',
+    --         'markdown'
+    --     }
+    -- }
     -- use {
     --     'winwisely268/findr.vim';
     --     opt = true;
@@ -108,10 +109,7 @@ return require('packer').startup(function()
         'lervag/wiki.vim',
         opt = true,
         event = {'BufNewFile ~/Notes/**/*.md', 'BufReadPre ~/Notes/**/*.md'},
-        cmd = {
-            'WikiJournal', 'WikiOpen', 'WikiFzfPages', 'WikiFzfToc',
-            'WikiEnable', 'WikiIndex', 'WikiFzfTags'
-        }
+        cmd = {'WikiJournal', 'WikiOpen', 'WikiEnable', 'WikiIndex'}
     }
     use 'lambdalisue/suda.vim';
     -- native fuzzy finder
@@ -132,4 +130,3 @@ return require('packer').startup(function()
     }
     use {'kyazdani42/nvim-web-devicons'}
 end)
-

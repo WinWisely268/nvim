@@ -18,6 +18,13 @@ local function setup_plugin_autocmd()
                 'VimEnter,BufReadPost,BufEnter', '*',
                 [[:lua require('lspc.util').auto_cd()]]
             }
+        },
+        FmtWrite = {
+            {
+                'BufWritePost',
+                '*.js,*.rs,*.yaml,*.yml,*.ts,*.tsx,*.jsx,*.md,*.json,*.sh,*.lua',
+                [[FormatWrite]]
+            }
         }
     }
     au.create_augroups(plugin_augroups)
@@ -27,8 +34,8 @@ local function setup_plugin_options()
     -- other plugin options
     local plugin_options = {
         -- neoformat
-        neoformat_lua_luaformatter = {exe = 'lua-format'},
-        neoformat_rust_rustfmt = {exe = 'rustfmt', args = {'--edition', '2018'}},
+        -- neoformat_lua_luaformatter = {exe = 'lua-format'},
+        -- neoformat_rust_rustfmt = {exe = 'rustfmt', args = {'--edition', '2018'}},
         -- Pear tree
         pear_tree_map_special_keys = 0,
         -- vim-go
@@ -151,7 +158,7 @@ local function setup_plugin_mappings()
         -- sessions
         ['<LEADER>ss'] = ':SessSave',
         -- ['<LEADER>sl'] = [[:lua require('plugin.extra.fzf').load_sessions()<CR>]];
-        -- FZF & Vista
+        -- Telescope
         ['<LEADER>ot'] = [[:lua require('telescope.builtin').find_files({previewer = false})<CR>]],
         -- ['<LEADER>ff'] = ':Files<CR>';
         ['<LEADER>ff'] = ':Telescope find_files_workspace<CR>',
@@ -160,7 +167,7 @@ local function setup_plugin_mappings()
         ['<LEADER>f/'] = ':Telescope find_files_workspace<CR>',
         ['<LEADER>fh'] = ':Telescope help_tags<CR>',
         ['<LEADER>fl'] = ':Telescope current_buffer_fuzzy_find<CR>',
-        ['<LEADER>fb'] = ':Telescope buffers<CR>',
+        ['<LEADER>fb'] = [[:lua require('telescope.builtin').buffers({show_all_buffers = true})<CR>]],
         ['<leader>f:'] = ':Telescope commands<CR>',
         -- Project wide tags
         ['<LEADER>fp'] = [[:lua require'telescope'.extensions.project.project{}<CR>]],
@@ -170,6 +177,8 @@ local function setup_plugin_mappings()
         ['<leader>ft'] = ':Telescope treesitter<CR>',
         ['<LEADER>fjl'] = ':Telescope loclist<CR>',
         ['<LEADER>fjq'] = ':Telescope quickfix<CR>',
+        -- Formatter.nvim
+        [',g='] = ':FormatWrite<CR>',
         -- Suda
         ['<LEADER>sw'] = ':w suda://%',
         -- Mundo
@@ -187,13 +196,14 @@ as.async(function()
     require'telescope'.load_extension 'project'
     require'telescope'.load_extension 'fzy_native'
     require'telescope'.load_extension 'builtin_extras'
+    require('plugin.extra.wiki')
+    require('plugin.extra.gitsigns')
+    require('plugin.extra.formatter')
     setup_plugin_options()
     setup_plugin_mappings()
     setup_plugin_autocmd()
     local lua_ft = require('plugin.langs.lua.init')
     lua_ft.setup_lua_autocmd()
-    require('plugin.extra.wiki')
-    require('plugin.extra.gitsigns')
     require('lib.sessions').save()
 end)()
 
