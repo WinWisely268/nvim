@@ -7,20 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9656a69-c544-4f7b-ace1-7bf80fcb32fd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/init.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lua/plugin/extra/telescope.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_specific.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_specific.lua.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_machine_specific.vim.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/init.vim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/lspc/cfg.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/lspc/cfg.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/plugin/init.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/init.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/plugin/options.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/options.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lua/plugin/pkgs.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/pkgs.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mini.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/mini.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lua/cosmetics/colors.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/cosmetics/colors.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lua/cosmetics/colors/tomorrow-night.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/cosmetics/colors/tomorrow-night.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lua/plugin/extra/telescope.lua" beforeDir="false" afterPath="$PROJECT_DIR$/lua/plugin/extra/telescope.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,9 +46,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Projects/flutter_i18n" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="com.sylvanaar.idea.Lua.options.LuaOptionsPanel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -83,11 +73,6 @@
       <setting name="fixLineNumbers" value="false" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -104,6 +89,9 @@
       <workItem from="1610088712417" duration="4417000" />
       <workItem from="1610196676255" duration="856000" />
       <workItem from="1610199368374" duration="1956000" />
+      <workItem from="1612494318702" duration="49000" />
+      <workItem from="1612494380775" duration="22000" />
+      <workItem from="1616241905795" duration="498000" />
     </task>
     <servers />
   </component>

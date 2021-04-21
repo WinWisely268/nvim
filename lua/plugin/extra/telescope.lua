@@ -19,17 +19,5 @@ require('telescope').setup {
         color_devicons = true,
         use_less = true,
         set_env = {['COLORTERM'] = 'truecolor'}, -- default { }, currently unsupported for shells like cmd.exe / powershell.exe
-        mappings = {
-            n = {
-                ['<CR>'] = actions.goto_file_selection_edit + actions.center,
-                s = actions.goto_file_selection_split,
-                v = actions.goto_file_selection_vsplit,
-                t = actions.goto_file_selection_tabedit,
-                j = actions.move_selection_next,
-                k = actions.move_selection_previous,
-                u = actions.preview_scrolling_up,
-                d = actions.preview_scrolling_down
-            }
-        }
     }
 }
