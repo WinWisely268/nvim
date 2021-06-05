@@ -28,14 +28,20 @@ return require('packer').startup(function()
     use {'neovim/nvim-lspconfig', opt = true}
     -- Completion for lsp
     use {
-        'nvim-lua/completion-nvim',
-        opt = true,
-        after = 'nvim-lspconfig',
+        'hrsh7th/nvim-compe', opt = true, after = 'nvim-lspconfig',
         requires = {
             {'hrsh7th/vim-vsnip', opt = true, after = 'nvim-lspconfig'},
-            {'hrsh7th/vim-vsnip-integ', opt = true, after = 'nvim-lspconfig'}
         }
     }
+    use {
+        'folke/lua-dev.nvim', opt = true, after = 'nvim-lspconfig',
+    }
+    -- use {
+    --     'nvim-lua/completion-nvim',
+    --     opt = true,
+    --     after = 'nvim-lspconfig',
+    --     
+    -- }
     -- Tree-sitter
     use {'nvim-treesitter/nvim-treesitter', opt = true}
     use {'nvim-treesitter/nvim-treesitter-refactor', opt = true}
