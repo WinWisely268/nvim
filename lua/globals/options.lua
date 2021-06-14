@@ -18,7 +18,7 @@ function M.setup_global_autocmd()
             {'TermOpen', 'term://*', 'startinsert'},
             {'TermOpen', 'term://*', 'setlocal norelativenumber'}
         },
-        SpellSetup = {{'FileType', 'gitcommit, text', 'setlocal spell'}}
+        -- SpellSetup = {{'FileType', 'gitcommit, text', 'setlocal spell'}}
     }
     au.create_augroups(autocmds)
 end

@@ -36,6 +36,9 @@ return require('packer').startup(function()
     use {
         'folke/lua-dev.nvim', opt = true, after = 'nvim-lspconfig',
     }
+    use {
+        'ray-x/lsp_signature.nvim', opt = true, after = 'nvim-lspconfig'
+    }
     -- use {
     --     'nvim-lua/completion-nvim',
     --     opt = true,

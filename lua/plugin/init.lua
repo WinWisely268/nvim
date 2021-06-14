@@ -39,6 +39,7 @@ local function load_extras()
         'gitsigns.nvim', 'nvim-compe', -- LSP Stuff
         'vim-vsnip', 'lua-dev.nvim',  -- snippets
         'nvim-lspconfig', -- builtin LSP
+        'lsp_signature.nvim',
         'nvim-colorizer.lua', -- fastest colorizer
         'express_line.nvim', -- expressline
         'telescope.nvim', 'popup.nvim' -- vim telescope
