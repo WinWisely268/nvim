@@ -28,11 +28,22 @@ return require('packer').startup(function()
     use {'neovim/nvim-lspconfig', opt = true}
     -- Completion for lsp
     use {
-        'hrsh7th/nvim-compe', opt = true, after = 'nvim-lspconfig',
+        'hrsh7th/nvim-cmp', opt = true, after = 'nvim-lspconfig',
         requires = {
             {'hrsh7th/vim-vsnip', opt = true, after = 'nvim-lspconfig'},
         }
     }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+          require("trouble").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+          }
+        end
+      }
     use {
         'folke/lua-dev.nvim', opt = true, after = 'nvim-lspconfig',
     }

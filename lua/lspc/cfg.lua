@@ -120,7 +120,7 @@ capabilities.textDocument.codeAction = {
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- LSPs
-local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls"}
+local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "zls"}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {capabilities = capabilities, on_attach = on_attach}
 end
@@ -132,13 +132,13 @@ local sumneko_root_path = ""
 local sumneko_binary = ""
 
 if vim.fn.has("mac") == 1 then
-    sumneko_root_path = "/Users/" .. USER .. "/.config/nvim/lua-language-server"
+    sumneko_root_path = "/Users/" .. USER .. "/.cache/nvim/lua-language-server"
     sumneko_binary = "/Users/" .. USER ..
-                         "/.config/nvim/lua-language-server/bin/macOS/lua-language-server"
+                         "/.cache/nvim/lua-language-server/bin/macOS/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
-    sumneko_root_path = "/home/" .. USER .. "/.config/nvim/lua-language-server"
+    sumneko_root_path = "/home/" .. USER .. "/.cache/nvim/lua-language-server"
     sumneko_binary = "/home/" .. USER ..
-                         "/.config/nvim/lua-language-server/bin/Linux/lua-language-server"
+                         "/.cache/nvim/lua-language-server/bin/Linux/lua-language-server"
 else
     print("Unsupported system for sumneko")
 end
@@ -230,35 +230,44 @@ do
 end
 
 -- nvim-compe
-require'compe'.setup {
-    enabled = true;
-    autocomplete = true;
-    debug = false;
-    min_length = 1;
-    preselect = 'enable';
-    throttle_time = 80;
-    source_timeout = 200;
-    incomplete_delay = 400;
-    allow_prefix_unmatch = false;
-    max_abbr_width = 1000;
-    max_kind_width = 1000;
-    max_menu_width = 1000000;
-    documentation = true;
+local cmp = require'cmp'
 
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      -- For `vsnip` user.
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
 
-    source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        vsnip = true;
-        nvim_lsp = true;
-        nvim_lua = true;
-        spell = true;
-        tags = true;
-        snippets_nvim = true;
-        treesitter = true;
-  };
-}
+      -- For `luasnip` user.
+      -- require('luasnip').lsp_expand(args.body)
+
+      -- For `ultisnips` user.
+      -- vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+
+    -- For vsnip user.
+    { name = 'vsnip' },
+
+    -- For luasnip user.
+    -- { name = 'luasnip' },
+
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
+
+    { name = 'buffer' },
+  }
+})
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -283,8 +292,6 @@ _G.tab_complete = function()
     return t "<Plug>(vsnip-expand-or-jump)"
   elseif check_back_space() then
     return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
   end
 end
 _G.s_tab_complete = function()
