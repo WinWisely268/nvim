@@ -31,6 +31,9 @@ return require('packer').startup(function()
         'hrsh7th/nvim-cmp', opt = true, after = 'nvim-lspconfig',
         requires = {
             {'hrsh7th/vim-vsnip', opt = true, after = 'nvim-lspconfig'},
+						{'hrsh7th/cmp-nvim-lsp', opt = true, after = 'nvim-lspconfig'},
+						{'hrsh7th/cmp-buffer', opt = true, after = 'nvim-lspconfig'},
+						{'hrsh7th/cmp-vsnip', opt = true, after = 'nvim-lspconfig'},
         }
     }
     use {

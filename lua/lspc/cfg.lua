@@ -119,11 +119,6 @@ capabilities.textDocument.codeAction = {
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
--- LSPs
-local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "zls"}
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {capabilities = capabilities, on_attach = on_attach}
-end
 
 sign_define()
 
@@ -237,12 +232,6 @@ cmp.setup({
     expand = function(args)
       -- For `vsnip` user.
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` user.
-
-      -- For `luasnip` user.
-      -- require('luasnip').lsp_expand(args.body)
-
-      -- For `ultisnips` user.
-      -- vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   mapping = {
@@ -255,56 +244,17 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
-
-    -- For vsnip user.
     { name = 'vsnip' },
-
-    -- For luasnip user.
-    -- { name = 'luasnip' },
-
-    -- For ultisnips user.
-    -- { name = 'ultisnips' },
-
     { name = 'buffer' },
   }
 })
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
 
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
+-- LSPs
+local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "zls"}
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+			capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()), 
+			on_attach = on_attach,
+		}
 end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
-  elseif check_back_space() then
-    return t "<Tab>"
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
