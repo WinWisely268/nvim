@@ -9,7 +9,6 @@ end
 local luafmt_func = function()
   return {
     exe = "lua-format",
-    -- args = {"--indent-count", 2, "--stdin"},
     stdin = true
   }
 end
@@ -24,7 +23,7 @@ end
 local prettier_func = function()
   return {
     exe = "prettier",
-    args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
+		args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), '--single-quote'},
     stdin = true
   }
 end
@@ -32,7 +31,8 @@ end
 local zigfmt_func = function()
   return {
     exe = "zig",
-    args = {"fmt", vim.api.nvim_buf_get_name(0)}
+    args = {"fmt", vim.api.nvim_buf_get_name(0)},
+		stdin = true
   }
 end
 
