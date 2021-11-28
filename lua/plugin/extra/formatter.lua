@@ -20,10 +20,10 @@ local rustfmt_func = function()
   }
 end
 
-local prettier_func = function()
+local dprint_func = function()
   return {
-    exe = "prettier",
-		args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)), '--single-quote'},
+    exe = "dprint",
+    args = {'fmt', vim.api.nvim_buf_get_name(0)},
     stdin = true
   }
 end
@@ -32,20 +32,20 @@ local zigfmt_func = function()
   return {
     exe = "zig",
     args = {"fmt", vim.api.nvim_buf_get_name(0)},
-		stdin = true
+    stdin = true
   }
 end
 
 require('formatter').setup({
   logging = false,
   filetype = {
-    javascript = {prettier_func},
-    javascriptreact = {prettier_func},
-    typescript = {prettier_func},
-    typescriptreact = {prettier_func},
-    yaml = {prettier_func},
-    markdown = {prettier_func},
-    json = {prettier_func},
+    javascript = {dprint_func},
+    javascriptreact = {dprint_func},
+    typescript = {dprint_func},
+    typescriptreact = {dprint_func},
+    yaml = {dprint_func},
+    markdown = {dprint_func},
+    json = {dprint_func},
     bash = {shfmt_func},
     sh = {shfmt_func},
     rust = {rustfmt_func},

@@ -157,12 +157,12 @@ local function setup_plugin_mappings()
     local plugin_mappings = {
         ['<LEADER>sga'] = '<Plug>(EasyAlign)',
         -- Vim Sneak
-        ['s'] = '<Plug>Sneak_s',
-        ['S'] = '<Plug>Sneak_S',
-        ['f'] = '<Plug>Sneak_f',
-        ['F'] = '<Plug>Sneak_F',
-        ['t'] = '<Plug>Sneak_t',
-        ['T'] = '<Plug>Sneak_T'
+        -- ['s'] = '<Plug>Sneak_s',
+        -- ['S'] = '<Plug>Sneak_S',
+        -- ['f'] = '<Plug>Sneak_f',
+        -- ['F'] = '<Plug>Sneak_F',
+        -- ['t'] = '<Plug>Sneak_t',
+        -- ['T'] = '<Plug>Sneak_T'
     }
     for k, v in pairs(plugin_mappings) do
         bind.map.nov(k, v, {noremap = true})

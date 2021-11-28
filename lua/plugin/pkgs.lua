@@ -119,11 +119,28 @@ return require('packer').startup(function()
     cmd = {'MundoToggle'}
   }
   -- Essentials
-  use 'tpope/vim-surround'
+  use {
+    "blackCauldron7/surround.nvim",
+    config = function()
+      require"surround".setup {
+        mappings_style = "surround"
+      }
+    end
+  }
   -- Easily align shit
   use 'junegunn/vim-easy-align'
   -- Jump anywhere
-  use 'justinmk/vim-sneak'
+  -- use 'justinmk/vim-sneak'
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v1', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup {
+        keys = 'arstdhneio;wfgm'
+      }
+    end
+  }
   -- Calendar inside vim
   -- use {'itchyny/calendar.vim'; opt = true; cmd = {'Calendar'}}
   -- Pretty please with a cherry on top

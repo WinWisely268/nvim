@@ -37,7 +37,7 @@ local function setup_plugin_options()
     -- neoformat_lua_luaformatter = {exe = 'lua-format'},
     -- neoformat_rust_rustfmt = {exe = 'rustfmt', args = {'--edition', '2018'}},
     -- Pear tree
-    pear_tree_map_special_keys = 0,
+    -- pear_tree_map_special_keys = 0,
     -- vim-go
     go_test_timeout = 30,
     go_gopls_enabled = 0,
@@ -74,7 +74,7 @@ local function setup_plugin_options()
     vmt_fence_text = 'TOC',
     vmt_fence_closing_text = '/TOC',
     -- vim-sneak
-    ['sneak#label'] = 1,
+    -- ['sneak#label'] = 1,
     -- vim-signify
     -- signify_sign_add = '▋';
     -- signify_sign_delete = '▋';
@@ -104,9 +104,12 @@ end
 
 local function setup_plugin_mappings()
   local xmappings = {
-    ['gS'] = '<Plug>VgSurround',
-    ['S'] = '<Plug>VSurround',
-    ['sga'] = '<Plug>(EasyAlign)'
+    -- ['gS'] = '<Plug>VgSurround',
+    -- ['S'] = '<Plug>VSurround',
+    ['sga'] = '<Plug>(EasyAlign)',
+    ['f'] = ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<CR>",
+    ['F'] = ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<CR>"
+
   }
 
   for k, v in pairs(xmappings) do
@@ -118,9 +121,9 @@ local function setup_plugin_mappings()
 
   local imappings = {
     -- Pear-tree
-    ['<c-b>'] = '<Plug>(PearTreeBackspace)',
-    ['<c-<CR>>'] = '<Plug>(PearTree)',
-    ['<c-j>'] = '<Plug>(PearTreeBackspace)'
+    -- ['<c-b>'] = '<Plug>(PearTreeBackspace)',
+    -- ['<c-<CR>>'] = '<Plug>(PearTree)',
+    -- ['<c-j>'] = '<Plug>(PearTreeBackspace)'
   }
   for k, v in pairs(imappings) do
     bind.map.i(k, v, {
@@ -136,15 +139,15 @@ local function setup_plugin_mappings()
     ['<LEADER>gm'] = ':GitMessenger<CR>',
     -- goyo.vim
     ['<LEADER>mgy'] = ':Goyo<CR>',
-    -- surround
-    ['gS'] = '<Plug>VgSurround',
-    ['ds'] = '<Plug>Dsurround',
-    ['cs'] = '<Plug>Csurround',
-    ['cS'] = '<Plug>CSurround',
-    ['ys'] = '<Plug>Ysurround',
-    ['yS'] = '<Plug>YSurround',
-    ['yss'] = '<Plug>Yssurround',
-    ['ysS'] = '<Plug>YsSurround',
+    -- -- surround
+    -- ['gS'] = '<Plug>VgSurround',
+    -- ['ds'] = '<Plug>Dsurround',
+    -- ['cs'] = '<Plug>Csurround',
+    -- ['cS'] = '<Plug>CSurround',
+    -- ['ys'] = '<Plug>Ysurround',
+    -- ['yS'] = '<Plug>YSurround',
+    -- ['yss'] = '<Plug>Yssurround',
+    -- ['ysS'] = '<Plug>YsSurround',
     -- Vim EasyAlign
     ['sga'] = '<Plug>(EasyAlign)',
     -- vim-table
@@ -193,10 +196,15 @@ local function setup_plugin_mappings()
     -- Suda
     ['<LEADER>sw'] = ':w suda://%',
     -- Mundo
-    ['U'] = ':MundoToggle<CR>'
+    ['U'] = ':MundoToggle<CR>',
     -- fzf others
     -- ['<LEADER>fk'] = [[:lua require('plugin.extra.fzf').kill_buffers()<CR>]];
+    -- Hop.nvim
+    ['s'] = ":lua require'hop'.hint_char2({current_line_only = false})<CR>",
+    ['f'] = ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>",
+    ['F'] = ":lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
   }
+
   for k, v in pairs(nmappings) do
     bind.map.n(k, v, {
       noremap = false,
